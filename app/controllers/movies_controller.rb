@@ -1,8 +1,8 @@
-KEYS = [:id, :title, :overview, :relase_date, :inventory]
+JSON_KEYS = [:id, :title, :overview, :relase_date, :inventory]
 
 class MoviesController < ApplicationController
   def index
-    movies = Movie.all.as_json(only: KEYS)
+    movies = Movie.all.as_json(only: JSON_KEYS)
     render json: movies, status: :ok
   end
 
@@ -10,7 +10,7 @@ class MoviesController < ApplicationController
     movie_id = params[:id]
     movie = Movie.find_by(id: movie_id)
     if movie
-      render json: movie.as_json(only: KEYS) #status: :ok
+      render json: movie.as_json(only: JSON_KEYS) #status: :ok
       return
     else
       render json: movie, status: :not_found
@@ -22,7 +22,7 @@ class MoviesController < ApplicationController
   end
 
   private
-    def pet_params
+    def movie_params
       params.require(:movie).permit(:id, :title, :overview, :relase_date, :inventory)
     end
 end
