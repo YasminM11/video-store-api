@@ -1,6 +1,6 @@
 require "test_helper"
 
-CUSTOMER_KEYS = [:id, :name, :register_at, :address, :city, :state, :postal_code, :phone]
+CUSTOMER_KEYS = ["id", "name", 'address', "city", "state", "postal_code", "phone"]
 
 describe CustomersController do
   describe "index" do
