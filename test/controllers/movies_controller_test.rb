@@ -4,7 +4,7 @@ describe MoviesController do
  
   describe index do
 
-    it "respoonds with json and responds with success" do
+    it "responds with json and responds with success" do
       gets movies_path
       expect(response.header["Content-Type"]).must_include 'json'
       must_respond_with :ok
