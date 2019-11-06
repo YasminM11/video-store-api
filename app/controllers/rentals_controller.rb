@@ -10,7 +10,7 @@ class RentalsController < ApplicationController
         rental = Rental.find_by(id: params:[:id])
 
         if rental
-            render json: movie.as_json(only: [:id, :title, :overview, :release_date, :inventory])
+            render json: rental.as_json(only: [:id, :customer_id, :movie_id, :checkout, :due_date])
             return
         else
             render json: { ok: false, errors: ["Not Found"] }, status: :not_found
@@ -29,4 +29,10 @@ class RentalsController < ApplicationController
             return
         end
     end
+
+    private
+    def rental_params
+      params.require(:rental).permit(:id, :customer_id, :movie_id, :checkout, :due_date)
+    end
+
 end
