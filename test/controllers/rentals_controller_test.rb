@@ -4,7 +4,7 @@ describe RentalsController do
   
   RENTAL_FIELDS = w%(customer_id movie_id check_out due_date
 
-  def check_response(expected_type:, expected_status: :success) do
+  def check_response(expected_type:, expected_status: :success)
     must_respond_with expected_status
     expect(response.header["Content-Type"]).must_include "json"
 
@@ -14,6 +14,7 @@ describe RentalsController do
   end
 
   describe "index" do
+
     it "responds with JSON and success" do
       gets rentals_path
 
@@ -57,31 +58,32 @@ describe RentalsController do
     end
 
     describe "create" do
-      let(:rental_data) {
-        {
-          rental: {
+
+      before do
+          @rental = {
+            rental: {
             customer_id: 5,
             movie_id: 2,
             checkout: 2019/12/12,
             due_date: 2019/12/21
           }
         }
-      }
+      end
 
-      it "can create a new rental" do
-        expect {post rental_path, params: rental_data}.must_differ 'Rental.count', 1
+      it "can create a new rental given correct parameters" do
+        expect {post rental_path, params: @rental}.must_differ 'Rental.count', 1
 
         body = check_response(expected_type: Hash, expected_status: :created)
-        new_rental = Rental.find(body["id"])
-        rental_data[:rental].each do |key, value|
-          expect(new_rental)[key.to_s].must_equal value
+        @rental = Rental.find(body["id"])
+        @rental[:rental].each do |key, value|
+          expect(@rental)[key.to_s].must_equal value
       end
-    end
+   
 
     it "will respon with bad_request for invalid data" do 
-      rental_data[:rental][:title] = nil
+      @rental[:rental][:customer_id] = nil
 
-      expect { post rental_path, params: rental_data }.wont_change "Pet.count"
+      expect { post rental_path, params: @rental }.wont_change "Rental.count"
 
       body = check_response(expected_type: Hash, expected_status: :bad_request)
       expected(body["errors"].keys).must_include "title"
