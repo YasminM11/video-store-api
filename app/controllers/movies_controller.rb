@@ -17,8 +17,6 @@ class MoviesController < ApplicationController
       #render json: {"errors"=>["not found"]}, status: :not_found
       return
     end
-
-    
   end
 
   private
