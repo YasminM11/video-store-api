@@ -67,7 +67,7 @@ describe Rental do
         expect(result).must_equal false
       end
 
-      it "is valid with a do date" do
+      it "is valid with a due date" do
        due_date = due_date(:due_date) #put yml key
      
         result = rental.valid?
