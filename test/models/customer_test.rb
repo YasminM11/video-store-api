@@ -8,6 +8,10 @@ describe Customer do
     expect(erika.valid?).must_equal false
   end
 
+  it "works  if the name is valid" do
+    expect(erika.valid?).must_equal true
+end
+
 describe 'relations' do  
      
   it "has many rentals" do
