@@ -6,20 +6,9 @@ require "minitest/rails"
 Minitest::Reporters.use!(
   Minitest::Reporters::SpecReporter.new,
   ENV,
-  Minitest.backtrace_filter
-)
-
-
-require 'minitest/rails'
+  Minitest.backtrace_filter)
 require 'minitest/autorun'
 require 'minitest/reporters'
-
-Minitest::Reporters.use!(
-  Minitest::Reporters::SpecReporter.new,
-  ENV,
-  Minitest.backtrace_filter
-)
-
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.

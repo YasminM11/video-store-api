@@ -28,11 +28,10 @@ class RentalsController < ApplicationController
   #   end
   # end
 
-
-  # private
-  #   def rental_params
-  #     params.require(:rental).permit(:id, :customer_id, :movie_id, :checkout, :due_date)
-  #   end
+  private
+    def rental_params
+      params.permit(:id, :customer_id, :movie_id, :checkout, :due_date)
+    end
 
 
 end

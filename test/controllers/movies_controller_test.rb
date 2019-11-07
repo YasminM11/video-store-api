@@ -53,11 +53,8 @@ describe MoviesController do
   
       body = check_response(expected_type: Hash, expected_status: :not_found)
       expect(body.keys).must_include "errors"    
+    end
   end
-
-  end
-
-
 end
 
 
