@@ -1,0 +1,15 @@
+movie1:
+ title: The Mysteries of the Potato
+ overview: Learn the Secrets of this Humble Tuber
+ release_date: 2019-11-28T21:14:08.000Z
+ inventory: 3
+movie2:
+ title: Daylight
+ overview: A heroic motorcyclist saves a tunnel filled with panicked citizens
+ release_date: 2019-11-28T21:14:08.000Z
+ inventory: 6
+movie3:
+ title: Aladdin
+ overview: The parrot is the only thing that matter
+ release_date: 2019-11-28T21:14:08.000Z
+ inventory: 2
