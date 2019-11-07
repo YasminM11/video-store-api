@@ -92,6 +92,11 @@ describe RentalsController do
 #     end
 #   end
 
+<<<<<<< HEAD
+=======
+# end
+
+>>>>>>> a8d1c1af06da61df5bd2c11b115ffc9dc2cce17f
 
 # describe RentalsController do
   
