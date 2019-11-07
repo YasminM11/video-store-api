@@ -1,6 +1,6 @@
 class Customer < ApplicationRecord
   
-  has_many :rental
+  has_many :rentals
 
 # validations
 validates :name, presence: true, uniqueness: true
