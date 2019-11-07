@@ -91,8 +91,8 @@ describe RentalsController do
 #     end
 #   end
 
-end
-=======
+# end
+
 
 # describe RentalsController do
   
