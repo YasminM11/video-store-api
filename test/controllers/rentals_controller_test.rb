@@ -39,6 +39,7 @@ describe RentalsController do
       body = check_response(expected_type: Array)
       expect(body).must equal []
     end
+    
 
 #     describe "show" do
 #       it "retrieves one rental" do
@@ -91,8 +92,6 @@ describe RentalsController do
 #     end
 #   end
 
-end
-=======
 
 # describe RentalsController do
   
