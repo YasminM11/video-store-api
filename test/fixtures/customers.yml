@@ -5,7 +5,7 @@ customer1:
  state: florida
  postal_code: 98185
  phone: 42367788
-#  registered_at: 2019-12-28T21:14:08.000Z
+ 
 customer2:
  name: Yasmin
  address: 778 435th pl sw 
@@ -13,5 +13,5 @@ customer2:
  state: WA
  postal_code: 98005
  phone: 42367777
-#  registered_at: 2018-12-28T21:15:08.000Z
+
   
