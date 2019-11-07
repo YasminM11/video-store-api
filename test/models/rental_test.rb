@@ -75,6 +75,8 @@ describe Rental do
       end
     end
 
+    # belongs to movie, check if a rental movie is instance of movie
+    # belongs to customer, check if a rental customer is instance of customer
 end
 
 
