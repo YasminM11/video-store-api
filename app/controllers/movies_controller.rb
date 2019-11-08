@@ -2,7 +2,7 @@
 
 class MoviesController < ApplicationController
 
-  JSON_KEYS = [:id, :title, :overview, :release_date, :inventory]
+  JSON_KEYS = [:id, :title, :overview, :release_date, :inventory, :available_inventory]
   
   def index
     movies = Movie.all
@@ -26,7 +26,7 @@ class MoviesController < ApplicationController
 
   private
     def movie_params
-      params.require(:movie).permit(:id, :title, :overview, :relase_date, :inventory)
+      params.require(:movie).permit(:id, :title, :overview, :relase_date, :inventory, :available_inventory)
     end
 end
 

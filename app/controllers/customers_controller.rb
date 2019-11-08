@@ -1,4 +1,4 @@
-JSON_KEYS = [:id, :name, :registered_at, :address, :city, :state, :postal_code, :phone]
+JSON_KEYS = [:id, :name, :registered_at, :address, :city, :state, :postal_code, :phone, :movies_checked_out_count]
 
 class CustomersController < ApplicationController
   def index
@@ -10,6 +10,6 @@ class CustomersController < ApplicationController
     private
 
   def customer_params
-    params.require(:customer).permit(:id, :name, :registered_at, :address, :city, :state, :postal_code, :phone)
+    params.require(:customer).permit(:id, :name, :registered_at, :address, :city, :state, :postal_code, :phone, :movies_checked_out_count)
   end
 end
