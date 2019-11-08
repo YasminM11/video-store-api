@@ -7,6 +7,7 @@ describe MoviesController do
   describe 'index' do
 
     it "responds with JSON and responds with success" do
+
       get movies_path
 
       expect(response.header["Content-Type"]).must_include 'json'
@@ -14,6 +15,7 @@ describe MoviesController do
     end
 
     it "provides the expected array of movies" do
+      
       get movies_path
       body = JSON.parse(response.body)
 
