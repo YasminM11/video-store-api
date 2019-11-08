@@ -14,7 +14,6 @@ describe Customer do
         expect(valid_customer.valid?).must_equal true
       end
     end
- 
 
     describe 'validate address' do
       it "is invalid without an address" do
