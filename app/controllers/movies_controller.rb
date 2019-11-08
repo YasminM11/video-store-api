@@ -2,7 +2,7 @@
 
 class MoviesController < ApplicationController
 
-  JSON_KEYS = [:id, :title, :overview, :release_date, :inventory, :available_inventory]
+  JSON_KEYS = [:title, :overview, :release_date, :inventory, :available_inventory]
   
   def index
     movies = Movie.all

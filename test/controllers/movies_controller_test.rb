@@ -1,6 +1,6 @@
 require "test_helper"
 
-JSON_KEYS = ["id", "title", "overview", "release_date", "inventory"]
+JSON_KEYS = ["title", "overview", "release_date", "inventory", "available_inventory"]
 
 describe MoviesController do
  
@@ -20,7 +20,7 @@ describe MoviesController do
       expect(body).must_be_instance_of Array
       body.each do |movie|
         expect(movie).must_be_instance_of Hash
-        expect(movie.keys.sort).must_equal ["id", "title", "overview", "release_date", "inventory"].sort
+        expect(movie.keys.sort).must_equal ["title", "overview", "release_date", "inventory", "available_inventory"].sort
       end
     end
 
