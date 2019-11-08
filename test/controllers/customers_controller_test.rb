@@ -4,10 +4,17 @@ CUSTOMER_KEYS = ["id", "name", 'address', "city", "state", "postal_code", "phone
 
 describe CustomersController do
   describe "index" do
+
     it "responds with JSON, success, and an array of customer hashes" do
       get customers_path
+      expect(response.header['Content-Type']).must_include 'json'
+      must_respond_with :ok
+    end
 
-      body = check_response(expected_type: Array)
+    it "responds with accurate list of customers" do
+
+      get customers_path
+      body = JSON.parse(response.body)
 
       body.each do |customer|
         expect(customer).must_be_instance_of Hash

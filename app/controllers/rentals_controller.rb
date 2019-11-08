@@ -1,10 +1,6 @@
 class RentalsController < ApplicationController
 
-  def index
-   @rentals = Rental.all
-    rental = Rental.all.as_json(only: [:customer_id, :movie_id, :checkout, :due_date])
-    render json: rental, status: :ok
-  end
+  
 
   # def show
   #   rental = Rental.find_by(id: params:[:id])
