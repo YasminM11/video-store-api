@@ -55,6 +55,39 @@ describe MoviesController do
       expect(body.keys).must_include "errors"    
     end
   end
+
+  describe "create" do
+
+    before do
+
+      @movie = {
+        movie: {
+          title: "The Net",
+          overview: "A very convincing story of the perils of the internet",
+          release_date: "1995/07/05",
+          inventory: 2
+        }
+      }
+
+    it "responds with created status when valid information is provided" do
+      expect{ post movies_path, params @movie}.must_differ 'Movie.count', 1
+      must_respond_with :created
+      body = JSON.parse(response.body)
+      expect(body.keys).must_equal ["id"]
+    end
+
+    it "responds with bad_request when the request is given invalid information"
+      invalid_entry = @movie
+      invalid_entry[:movie][:title] = nil
+
+      expect {post movies_path, params @movie}.wont_change "Movie.count"
+      must_respond_with :bad_request
+      body = JSON.parse(response.body)
+      expect(body["errors"].keys).must_include "title"
+    end
+  end
+
+
 end
 
 

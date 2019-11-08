@@ -20,8 +20,20 @@ class MoviesController < ApplicationController
       render json: { errors: ["Not Found"] }, status: :not_found
       return
     end
-
   end
+
+  def create
+    movie = Movie.new([:title, :overview, :release_date, :inventory])
+
+    if movie.save
+      render json: movie.as_json(only: [:id]), status: :created
+      return
+    else
+      render json: {ok: false, errors: new_pet.errors.messages}
+      return
+    end
+  end
+    
 
   private
     def movie_params
