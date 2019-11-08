@@ -2,7 +2,7 @@
 
 class MoviesController < ApplicationController
 
-  JSON_KEYS = [:id, :title, :overview, :release_date, :inventory]
+  JSON_KEYS = [:title, :overview, :release_date, :inventory]
   
   def index
     movies = Movie.all
@@ -32,6 +32,7 @@ class MoviesController < ApplicationController
       render json: {errors: ["errors"]}, status: :bad_request
       return
     end
+
   end
     
 

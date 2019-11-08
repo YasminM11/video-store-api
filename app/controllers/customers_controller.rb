@@ -1,7 +1,7 @@
-JSON_KEYS = [:id, :name, :register_at, :address, :city, :state, :postal_code, :phone]
 
 class CustomersController < ApplicationController
-  
+  JSON_KEYS = [:id, :name, :register_at, :address, :city, :state, :postal_code, :phone]
+
   def index
     customers = Customer.all.as_json(only: JSON_KEYS)
     render json: customers, status: :ok

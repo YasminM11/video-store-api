@@ -18,7 +18,7 @@ describe MoviesController do
       
       body.each do |movie|
         expect(movie).must_be_instance_of Hash
-        expect(movie.keys.sort).must_equal ["id", "title", "overview", "release_date", "inventory"].sort
+        expect(movie.keys.sort).must_equal ["title", "overview", "release_date", "inventory"].sort
       end
     end
 
@@ -52,12 +52,12 @@ describe MoviesController do
   describe "create" do
     before do
       @movie = {
-        movie: {
+
           title: "The Net",
           overview: "A very convincing story of the perils of the internet",
           release_date: "1995/07/05",
           inventory: 2
-        }
+
       }
     end
 
