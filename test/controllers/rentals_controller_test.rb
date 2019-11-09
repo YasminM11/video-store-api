@@ -15,7 +15,26 @@ describe RentalsController do
 
   describe "checkout" do
     it "it responds with success when given valid data" do
-      expect{ post checkout_path, params: @rental }.must_differ 'Rental.count', 1
+      expect{ post checkout_path, params: @rental }.must_change 'Rental.count', 1
+      must_respond_with :success
+    
+      body = JSON.parse(response.body)
+      expect(body.keys).must_equal ["id"]
+    end
+
+    it "it returns an error for invalid rental data" do
+      @rental[:movie_id] = nil
+      expect{post checkout_path, params: @rental }.wont_change "Rental.count"
+      must_respond_with :bad_request
+
+      body = JSON.parse(response.body)
+      expect(body.keys).must_include "errors"
+    end
+  end
+
+  describe "check_in" do
+    it "it responds with success when given valid data" do
+      expect{ post check_in_path, params: @rental }.must_differ 'Rental.count', 1
       must_respond_with :success
     
       body = JSON.parse(response.body)
@@ -25,7 +44,7 @@ describe RentalsController do
     it "it returns an error for invalid rental data" do
       @rental[:customer_id] = nil
 
-      expect{post checkout_path, params: @rental }.wont_change "Rental.count"
+      expect{post check_in_path, params: @rental }.wont_change "Rental.count"
       must_respond_with :bad_request
 
       body = JSON.parse(response.body)

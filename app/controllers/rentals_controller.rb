@@ -19,17 +19,15 @@ class RentalsController < ApplicationController
     end
   end
 
-  # def check_in
-  #   movie = Movie.find_by(rental_params[:movie_id])
-  #   movies_available = movie.available_inventory
-  #   if movie.nil?
-  #   render json: { errors: ["Not Found"] }, status: :bad_request
-  #   elsif  movies_available
-  #     render json: movie, status: :ok
-  #   else
-  #     render_error
-  #   end
-  # end
+  def check_in
+    movie = Movie.find_by(params[:id])
+    # movies_available = movie.available_inventory
+    if movie
+      render json: movie, status: :ok
+    else
+      render json: { errors: ["Not Found"] }, status: :bad_request
+    end
+  end
 
   private
     def rental_params
