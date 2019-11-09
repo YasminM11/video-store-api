@@ -10,10 +10,10 @@ class RentalsController < ApplicationController
     rental.due_date = DateTime.now + 7
     
     if rental.save
-    render json: rental, status: :ok
-    customer.checkout += 1
-    # movie.inventory -= 1
-    customer.save!
+      render json: rental, status: :ok
+      customer.checkout += 1
+      # movie.inventory -= 1
+      customer.save!
     else
       render json: { errors: ["Not Found"] }, status: :bad_request
     end
@@ -28,5 +28,5 @@ class RentalsController < ApplicationController
       render json: { errors: ["Not Found"] }, status: :bad_request
     end
   end
-
+end
   
