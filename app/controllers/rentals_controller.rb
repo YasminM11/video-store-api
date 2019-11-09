@@ -28,5 +28,12 @@ class RentalsController < ApplicationController
       render json: { errors: ["Not Found"] }, status: :bad_request
     end
   end
+
+  private
+
+  def rental_params
+    params.permit(:customer_id, :movie_id)
+  end
+
 end
   
