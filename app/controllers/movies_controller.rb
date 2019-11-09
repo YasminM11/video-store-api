@@ -2,7 +2,7 @@
 
 class MoviesController < ApplicationController
 
-  JSON_KEYS = [:id, :title, :overview, :release_date, :inventory]
+  JSON_KEYS = [:title, :overview, :release_date, :inventory]
   
   def index
     movies = Movie.all
@@ -20,12 +20,25 @@ class MoviesController < ApplicationController
       render json: { errors: ["Not Found"] }, status: :not_found
       return
     end
+  end
+
+  def create
+    new_movie = Movie.new(movie_params)
+
+    if new_movie.save
+      render json: new_movie.as_json(only: [:id]), status: :created
+      return
+    else
+      render json: {errors: ["errors"]}, status: :bad_request
+      return
+    end
 
   end
+    
 
   private
     def movie_params
-      params.require(:movie).permit(:id, :title, :overview, :relase_date, :inventory)
+      params.permit(:title, :overview, :release_date, :inventory)
     end
 end
 
